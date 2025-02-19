@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>dragon soul 龙魂中文 Wiki</title>
+    <style>
+        body {
+            background-image: url('background.jpg'); /* 替换为你的背景图片URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column; /*  改为垂直布局 */
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .hero-section {
+            background-color: rgba(0, 123, 255, 0.9); /*  Hero 区背景色， 蓝色 */
+            color: white;
+            text-align: center;
+            padding: 50px 20px; /*  Hero 区 padding 更大 */
+            margin-bottom: 20px; /*  Hero 区底部 margin */
+            border-radius: 15px 15px 0 0; /*  Hero 区顶部圆角 */
+            width: 100%; /*  Hero 区宽度 100% */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /*  Hero 区阴影 */
+        }
+
+        .hero-section h1 {
+            font-size: 2.5em; /*  Hero 区标题更大 */
+            margin-bottom: 10px;
+        }
+
+        .hero-section p {
+            font-size: 1.2em; /*  Hero 区宣传语字体 */
+            font-weight: bold;
+        }
+
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 0 0 15px 15px; /*  容器底部圆角 */
+            padding: 20px;
+            margin: 0 10px 10px 10px; /*  容器顶部 margin 去掉， 底部 margin 保留 */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            text-align: left;
+            max-width: 95%;
+            width: auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+            font-size: 2em;
+        }
+
+        ol {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+            margin-bottom: 20px; /* 菜单底部增加 margin */
+        }
+
+        ol li {
+            display: inline;
+            margin: 0 15px; /* 菜单项 margin 稍微大一点 */
+        }
+
+        ol li a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            font-size: 1.1em; /* 菜单链接字体稍微大一点 */
+        }
+
+        ol li a:hover {
+            color: #0056b3;
+        }
+
+        hr {
+            border: 0;
+            border-top: 2px solid #ccc;
+            margin: 15px 0;
+        }
+
+        section {
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+            font-size: 1.5em;
+        }
+
+        h3 {
+            color: #007bff;
+            margin-top: 15px;
+            font-size: 1.2em;
+        }
+
+        ul, ol {
+            padding-left: 25px;
+        }
+
+        ul li, ol li {
+            font-size: 1em;
+            margin-bottom: 5px;
+        }
+
+
+        p {
+            font-size: 1em;
+            line-height: 1.6;
+        }
+
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .qq-share-image {
+            max-width: 80%;
+            height: auto;
+            display: block;
+            margin: 10px auto;
+        }
+
+        #qqqun p,
+        #qqpindao p {
+            text-align: center;
+        }
+
+        b {
+            color: #007bff;
+        }
+
+        /*  特色内容展示区样式  */
+        .featured-content {
+            display: flex;
+            flex-wrap: wrap; /*  允许卡片换行 */
+            justify-content: center; /*  水平居中 */
+            margin-bottom: 20px; /*  底部 margin */
+        }
+
+        .feature-card {
+            background-color: rgba(255, 255, 255, 0.9); /*  卡片背景色 */
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2); /*  卡片阴影 */
+            text-align: center;
+            width: 250px; /*  卡片宽度 */
+            transition: transform 0.3s ease; /*  添加过渡效果 */
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px); /*  鼠标悬浮时卡片向上移动 */
+        }
+
+        .feature-card h3 {
+            color: #007bff;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.3em; /*  卡片标题字体 */
+        }
+
+        .feature-card p {
+            font-size: 0.95em; /*  卡片描述字体 */
+            color: #666;
+        }
+
+        .feature-card a {
+            display: block; /*  让链接占满整个卡片 */
+            text-decoration: none;
+            color: inherit; /*  继承卡片的文字颜色 */
+        }
+
+        .feature-card img {
+            max-width: 80px; /*  卡片图标大小 */
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+
+        /* 媒体查询， 针对小屏幕优化 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                margin: 5px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            ol li {
+                margin: 0 8px;
+            }
+
+            ol li a {
+                font-size: 0.9em;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+
+            h3 {
+                font-size: 1.1em;
+            }
+
+            ul, ol {
+                padding-left: 20px;
+            }
+
+            ul li, ol li, p {
+                font-size: 0.95em;
+            }
+
+            .qq-share-image {
+                max-width: 150px;
+            }
+
+            .hero-section {
+                padding: 30px 15px; /*  小屏幕下 Hero 区 padding 小一点 */
+            }
+
+            .hero-section h1 {
+                font-size: 2em; /*  小屏幕下 Hero 区标题字体小一点 */
+            }
+
+            .hero-section p {
+                font-size: 1em; /*  小屏幕下 Hero 区宣传语字体小一点 */
+            }
+
+            .feature-card {
+                width: 100%; /*  小屏幕下卡片宽度 100% 占满一行 */
+                margin: 10px 0; /*  小屏幕下卡片上下 margin */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-section">
+        <h1>dragon soul 龙魂中文 Wiki</h1>
+    </div>
+
+    <div class="container">
+        <ol>
+            <li><a href="guanghuan.html">光环 (Halo)</a></li>
+            <li><a href="dengji.html">等级 (Level)</a></li>
+            <li><a href="boss.html">Boss</a></li>
+            <li><a href="suipian.html">碎片 (Fragment)</a></li>
+            <li><a href="linghun.html">灵魂 (Soul)</a></li>
+            <li><a href="zhanli.html">战力 (Combat Power)</a></li>
+            <li><a href="tongxingzheng.html">通行证 (Battle Pass)</a></li>
+            <li><a href="qqqun.html">QQ群分享 (QQ Group)</a></li>
+            <li><a href="qqpindao.html">QQ频道分享 (QQ Channel)</a></li>
+        </ol>
+
+        <hr>
+
+        <section class="featured-content">
+            <div class="feature-card">
+                <a href="boss.html">
+                    <img src="boss_icon.png" alt="Boss 攻略图标">  <h3>最新 Boss 攻略</h3>
+                    <p>掌握最新 Boss 打法，  轻松通关高难度副本！</p>
+                </a>
+            </div>
+
+            <div class="feature-card">
+                <a href="dengji.html">
+                    <img src="level_icon.png" alt="等级提升图标">  <h3>等级快速提升指南</h3>
+                    <p>还在升级慢？  这里有快速升级的秘诀！</p>
+                </a>
+            </div>
+
+            <div class="feature-card">
+                <a href="suipian.html">
+                    <img src="fragment_icon.png" alt="碎片攻略图标">  <h3>彩色碎片获取攻略</h3>
+                    <p>彩色碎片哪里刷？  最全攻略都在这里！</p>
+                </a>
+            </div>
+
+            <div class="feature-card">
+                <a href="linghun.html">
+                    <img src="soul_icon.png" alt="灵魂系统图标">  <h3>灵魂系统深度解析</h3>
+                    <p>灵魂系统怎么玩？  看完你就明白了！</p>
+                </a>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>
