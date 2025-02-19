@@ -9,7 +9,7 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
             font-family: sans-serif;
-            color: #333; /* 默认文字颜色 */
+            color: #333;
             margin: 0;
             padding: 0;
             display: flex;
@@ -18,37 +18,40 @@
             min-height: 100vh;
         }
 
-      .container {
-            background-color: rgba(255, 255, 255, 0.8); /* 半透明白色背景 */
-            backdrop-filter: blur(10px); /* 毛玻璃模糊效果 */
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
             border-radius: 15px;
-            padding: 30px;
-            margin: 20px;
+            padding: 20px; /* 减少一些 padding，在小屏幕下更舒适 */
+            margin: 10px; /* 减少一些 margin， 左右 margin 改为 auto 实现水平居中 */
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-            text-align: left; /* 内容左对齐 */
-            max-width: 90%; /* 限制最大宽度 */
+            text-align: left;
+            max-width: 95%; /* 稍微增加一些最大宽度，但仍然是百分比 */
+            width: auto; /* 宽度设置为 auto， 配合 max-width 实现自适应 */
         }
 
         h1 {
             text-align: center;
-            color: #007bff; /* 标题颜色 */
+            color: #007bff;
+            font-size: 2em; /* 使用 em 单位 */
         }
 
         ol {
             list-style-type: none;
             padding: 0;
-            text-align: center; /* 菜单居中 */
+            text-align: center;
         }
 
         ol li {
             display: inline;
-            margin: 0 15px;
+            margin: 0 10px; /* 稍微减少一些 margin */
         }
 
         ol li a {
             text-decoration: none;
             color: #007bff;
             font-weight: bold;
+            font-size: 1em; /* 使用 em 单位 */
         }
 
         ol li a:hover {
@@ -58,27 +61,41 @@
         hr {
             border: 0;
             border-top: 2px solid #ccc;
-            margin: 20px 0;
+            margin: 15px 0; /* 稍微减少一些 margin */
         }
 
         section {
-            margin-bottom: 30px;
+            margin-bottom: 25px; /* 稍微减少一些 margin */
         }
 
         h2 {
             color: #007bff;
             border-bottom: 2px solid #007bff;
             padding-bottom: 5px;
+            font-size: 1.5em; /* 使用 em 单位 */
         }
 
         h3 {
             color: #007bff;
-            margin-top: 20px;
+            margin-top: 15px; /* 稍微减少一些 margin */
+            font-size: 1.2em; /* 使用 em 单位 */
         }
 
         ul, ol {
-            padding-left: 20px;
+            padding-left: 25px; /* 列表的左 padding 稍微增加一点 */
         }
+
+        ul li, ol li {
+            font-size: 1em; /* 列表文字大小也使用 em 单位 */
+            margin-bottom: 5px; /* 列表项底部增加一些 margin */
+        }
+
+
+        p {
+            font-size: 1em; /* 段落文字大小也使用 em 单位 */
+            line-height: 1.6; /* 行高稍微调整一下，让文字更舒服 */
+        }
+
 
         a {
             color: #007bff;
@@ -89,20 +106,60 @@
             text-decoration: underline;
         }
 
-      .qq-share-image {
-            max-width: 200px; /* 限制二维码图片最大宽度 */
+        .qq-share-image {
+            max-width: 80%; /*  二维码图片最大宽度改为百分比 */
             height: auto;
             display: block;
-            margin: 10px auto; /* 图片居中 */
+            margin: 10px auto;
         }
 
         #qqqun p,
         #qqpindao p {
-            text-align: center; /* QQ群/频道信息居中 */
+            text-align: center;
         }
 
         b {
-            color: #007bff; /* 突出显示的文字颜色 */
+            color: #007bff;
+        }
+
+        /* 媒体查询， 针对小屏幕优化 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px; /*  小屏幕下容器 padding 更小 */
+                margin: 5px;  /* 小屏幕下容器 margin 更小 */
+            }
+
+            h1 {
+                font-size: 1.8em; /* 小屏幕下标题字体小一点 */
+            }
+
+            ol li {
+                margin: 0 8px; /* 小屏幕下菜单项 margin 更小 */
+            }
+
+            ol li a {
+                font-size: 0.9em; /* 小屏幕下菜单链接字体小一点 */
+            }
+
+            h2 {
+                font-size: 1.3em; /* 小屏幕下二级标题字体小一点 */
+            }
+
+            h3 {
+                font-size: 1.1em; /* 小屏幕下三级标题字体小一点 */
+            }
+
+            ul, ol {
+                padding-left: 20px; /* 小屏幕下列表左 padding 稍微小一点 */
+            }
+
+            ul li, ol li, p {
+                font-size: 0.95em; /* 小屏幕下段落和列表文字都小一点 */
+            }
+
+            .qq-share-image {
+                max-width: 150px; /* 小屏幕下二维码图片更小 */
+            }
         }
     </style>
 </head>
@@ -157,6 +214,7 @@
                 <li><b>复活节光环</b></li>
                 <li><b>圣诞节光环</b></li>
                 <li><b>愚人节光环</b></li>
+                <li><b>无头光环</b></li>
             </ol>
         </section>
 
@@ -355,7 +413,7 @@
             </ul>
 
             <h3>将普通灵魂变为永久灵魂</h3>
-            <p>要将普通灵魂变为永久灵魂，需要在商店购买 <b>佩尔马永久石</b> 并绑定到灵魂上。灵魂品阶越高，所需的佩尔マ永久石価格越高。</p>
+            <p>要将普通灵魂变为永久灵魂，需要在商店购买 <b>佩尔マ永久石</b> 并绑定到灵魂上。灵魂品阶越高，所需的佩尔マ永久石価格越高。</p>
             <p><b>注：</b> 所有灵魂在获得时都是普通的，需要购买佩尔マ永久石才能变为永久灵魂。</p>
         </section>
 
@@ -495,7 +553,7 @@
                     <ul>
                         <li>赠送悟吉塔服装 (无属性加成)。</li>
                         <li>赠送四个技能 (推荐 PVP 使用)。</li>
-                        <li>赠送 <b>悟吉塔战斗风格</b>.</li>
+                        <li>赠送 <b>悟吉塔战斗风格</b>。</li>
                     </ul>
                 </li>
                 <li><b>布罗利包 (Broly 捆绑包):</b>
