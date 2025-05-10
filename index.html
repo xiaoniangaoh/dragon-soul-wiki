@@ -414,24 +414,18 @@
     </div>
 
     <script>
-        // 这里是将来添加 JavaScript 代码的地方
-        // 这些代码将负责：
-        // 1. 页面加载时，向 Cloudflare Worker 后端发送请求，获取帖子列表数据。
-        // 2. 接收到数据后，动态生成 HTML，将帖子显示在 id="posts-list" 的 div 中。
-        // 3. 监听 id="new-post-form" 表单的提交事件。
-        // 4. 阻止表单默认提交，获取用户输入的标题和内容。
-        // 5. 将标题和内容通过 POST 请求发送到 Cloudflare Worker 后端。
-        // 6. 处理后端返回的响应（例如，显示发布成功消息或错误）。
+        // 你的 Cloudflare Worker URL
+        const WORKER_URL = 'https://super-art-faza.xiaoniangaoh.workers.dev'; // 替换成你的实际 Worker URL
 
         document.addEventListener('DOMContentLoaded', () => {
-            // 示例：加载帖子函数（需要实现）
+            // 加载帖子函数
             async function loadPosts() {
                 const postsListDiv = document.getElementById('posts-list');
                 postsListDiv.innerHTML = '<p>正在加载帖子...</p>'; // 显示加载状态
 
                 try {
-                    // 替换 '/api/posts' 为你的 Cloudflare Worker 处理获取帖子的 URL
-                    const response = await fetch('/api/posts');
+                    // 向 Worker 发送 GET 请求获取帖子列表
+                    const response = await fetch(`${WORKER_URL}/api/posts`);
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
                     }
@@ -461,7 +455,7 @@
                 }
             }
 
-            // 示例：提交新帖子函数（需要实现）
+            // 提交新帖子函数
             const newPostForm = document.getElementById('new-post-form');
             newPostForm.addEventListener('submit', async (event) => {
                 event.preventDefault(); // 阻止表单默认提交
@@ -475,8 +469,8 @@
                 };
 
                 try {
-                    // 替换 '/api/posts' 为你的 Cloudflare Worker 处理发布帖子的 URL
-                    const response = await fetch('/api/posts', {
+                    // 向 Worker 发送 POST 请求发布新帖子
+                    const response = await fetch(`${WORKER_URL}/api/posts`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -485,7 +479,9 @@
                     });
 
                     if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
+                         // 尝试读取错误信息
+                        const errorText = await response.text();
+                        throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
                     }
 
                     // 帖子发布成功，可以清空表单并重新加载帖子列表
@@ -496,7 +492,7 @@
 
                 } catch (error) {
                     console.error('发布帖子失败:', error);
-                    alert('发布帖子失败，请稍后再试。'); // 可以替换成更友好的提示方式
+                    alert(`发布帖子失败：${error.message}`); // 显示具体的错误信息
                 }
             });
 
