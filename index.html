@@ -415,7 +415,8 @@
 
     <script>
         // 你的 Cloudflare Worker URL
-        const WORKER_URL = 'super-art-fa2a.xiaoniangaoh.workers.dev'; // 替换成你的实际 Worker URL
+        // *** 修复：添加 https:// 协议 ***
+        const WORKER_URL = 'https://super-art-fa2a.xiaoniangaoh.workers.dev'; // 替换成你的实际 Worker URL
 
         document.addEventListener('DOMContentLoaded', () => {
             // 加载帖子函数
@@ -427,7 +428,9 @@
                     // 向 Worker 发送 GET 请求获取帖子列表
                     const response = await fetch(`${WORKER_URL}/api/posts`);
                     if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
+                        // 尝试读取错误信息
+                        const errorText = await response.text();
+                        throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
                     }
                     const posts = await response.json();
 
@@ -451,7 +454,7 @@
 
                 } catch (error) {
                     console.error('加载帖子失败:', error);
-                    postsListDiv.innerHTML = '<p>加载帖子失败，请稍后再试。</p>';
+                    postsListDiv.innerHTML = `<p>加载帖子失败：${error.message}</p>`; // 显示具体的错误信息
                 }
             }
 
